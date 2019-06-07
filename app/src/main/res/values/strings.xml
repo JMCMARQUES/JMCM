@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="calculator_name">JMCM Calculator</string>
+    <string name="number_request">Type in a number</string>
+    <string name="sum">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">x</string>
+    <string name="divide">/</string>
+    <string name="equals">= (result)</string>
+    <string name="clearLast">Cear last digit</string>
+    <string name="clearAll">Clear screen</string>
+</resources>
