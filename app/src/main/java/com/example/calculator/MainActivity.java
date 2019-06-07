@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
-import com.example.calculator.operationsPackage.Core;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.calculator.MESSAGE";
     private int operationId;
-    private Core core;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sum(View view) {
-        core.fetchNumberAndCalc("+");
+        fetchNumberAndCalc("+");
         clearAll(view);
     }
 
     public void minus(View view) {
-        core.fetchNumberAndCalc("-");
+        fetchNumberAndCalc("-");
         clearAll(view);
     }
 
     public void multiply(View view) {
-        core.fetchNumberAndCalc("*");
+        fetchNumberAndCalc("*");
         clearAll(view);
     }
 
     public void divide(View view) {
-        core.fetchNumberAndCalc("/");
+        fetchNumberAndCalc("/");
         clearAll(view);
     }
 
@@ -63,5 +61,34 @@ public class MainActivity extends AppCompatActivity {
     /**
      * @param
      */
+    private void fetchNumberAndCalc(String operator) {
 
+        TextView introducedNumber = (TextView) findViewById(R.id.display);
+        double oldNumber = Double.parseDouble(introducedNumber.getText().toString());
+
+        EditText newNumber = (EditText) findViewById(R.id.writeHere);
+        double introducedN = Double.parseDouble(newNumber.getText().toString());
+
+        TextView textView = findViewById(R.id.display);
+        double result;
+
+        if (oldNumber == 0) {
+            textView.setText(String.valueOf(introducedN));
+
+        } else {
+            if (operator.equals("+")) {
+                result = oldNumber + introducedN;
+            } else if (operator.equals("-")) {
+                result = oldNumber - introducedN;
+            } else if (operator.equals("*")) {
+                result = oldNumber * introducedN;
+            } else if (operator.equals("/")) {
+                result = oldNumber / introducedN;
+            } else {
+                result = 0;
+            }
+            String finalValue = String.valueOf(result);
+            textView.setText(finalValue);
+        }
+    }
 }
