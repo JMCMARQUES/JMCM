@@ -138,6 +138,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * @param view
+     */
+    public void tenPot(View view) {
+        operator = "tenPot";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void log(View view) {
+        operator = "log";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
      * @param operator
      */
     private void fetchSendNumber(String operator) {
@@ -151,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             double result;
 
             TextView textView = findViewById(R.id.display);
-            if (oldNumber == 0 && operator != "%" && operator != "squareRoot" && operator != "pot" && operator != "inv") {
+            if (oldNumber == 0 && operator != "%" && operator != "squareRoot" && operator != "pot" && operator != "inv" && operator != "tenPot" && operator != "log") {
                 textView.setText(String.valueOf(introducedNumber));
 
             } else {

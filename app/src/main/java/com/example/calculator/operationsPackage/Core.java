@@ -2,7 +2,6 @@ package com.example.calculator.operationsPackage;
 
 public class Core {
 
-
     /**
      * @param operator
      * @param oldNumber
@@ -35,6 +34,12 @@ public class Core {
 
         } else if (operator.equals("inv")) {
             result = 1 / introducedN;
+
+        } else if (operator.equals("tenPot")) {
+            result = Math.pow(10, introducedN);
+
+        } else if (operator.equals("log")) {
+            result = Math.log(introducedN);
 
         } else {
             result = 000000;
