@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void result(View view) {
-        System.out.println("operator at result " + operator);
-
         if (operator == null) {
         } else {
             fetchSendNumber(operator);
@@ -104,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (newNumber.getText().toString().equals("")) {
         } else {
-            System.out.println("FetchSend operator: " + operator);
             TextView existingNumber = (TextView) findViewById(R.id.display);
             double oldNumber = Double.parseDouble(existingNumber.getText().toString());
 
