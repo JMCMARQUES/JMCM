@@ -58,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@id/writeHere">
 
         <LinearLayout
+            android:id="@+id/operatiorLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -111,6 +112,61 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/operatiorLine"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:onClick="percentage"
+                android:text="@string/percent"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/rSquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:onClick="rootSq"
+                android:text="@string/rSquare"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/poten2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:onClick="pot"
+                android:text="@string/poten2"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:onClick="inverse"
+                android:text="@string/inverse"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/equals"
             android:layout_width="match_parent"
@@ -132,7 +188,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:onClick="clearLast"
-            android:text="@string/clearLast"/>
+            android:text="@string/clearLast" />
 
         <Button
             android:id="@+id/clearAll"
@@ -142,7 +198,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:onClick="clearAll"
-            android:text="@string/clearAll"/>
+            android:text="@string/clearAll" />
 
         <TextView
             android:id="@+id/display"
@@ -151,12 +207,12 @@
             android:layout_above="@id/clearLast"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@android:color/white"
             android:inputType="numberDecimal"
-            android:padding="16dp"
+            android:padding="8dp"
             android:text="@string/zero"
-            android:textAlignment="textEnd"/>
+            android:textAlignment="textEnd" />
 
         <Button
             android:id="@+id/clearCalc"
@@ -168,8 +224,6 @@
             android:onClick="clearCalc"
             android:text="@string/clearCalc" />
 
-
     </RelativeLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
