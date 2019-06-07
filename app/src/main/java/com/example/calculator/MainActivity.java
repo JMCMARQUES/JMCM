@@ -85,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * @param view
      */
+    public void clearCalc(View view) {
+        TextView textView = findViewById(R.id.display);
+        textView.setText("0");
+    }
+
+    /**
+     * @param view
+     */
     public void result(View view) {
         if (operator == null) {
         } else {
@@ -94,23 +102,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * @param view
+     */
+    public void percentage(View view) {
+        operator = "%";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void rootSq(View view) {
+        operator = "squareRoot";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void pot(View view) {
+        operator = "pot";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void inverse(View view) {
+        operator = "inv";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
      * @param operator
      */
     private void fetchSendNumber(String operator) {
 
         EditText newNumber = (EditText) findViewById(R.id.writeHere);
-
         if (newNumber.getText().toString().equals("")) {
         } else {
             TextView existingNumber = (TextView) findViewById(R.id.display);
             double oldNumber = Double.parseDouble(existingNumber.getText().toString());
-
             double introducedNumber = Double.parseDouble(newNumber.getText().toString());
-
-            TextView textView = findViewById(R.id.display);
             double result;
 
-            if (oldNumber == 0) {
+            TextView textView = findViewById(R.id.display);
+            if (oldNumber == 0 && operator != "%" && operator != "squareRoot" && operator != "pot" && operator != "inv") {
                 textView.setText(String.valueOf(introducedNumber));
 
             } else {

@@ -7,6 +7,13 @@
     <string name="multiply">x</string>
     <string name="divide">/</string>
     <string name="equals">= (result)</string>
-    <string name="clearLast">Cear last digit</string>
+    <string name="clearLast">Cear screen last digit</string>
     <string name="clearAll">Clear screen</string>
+    <string name="clearCalc">Clear result</string>
+    <string name="zero">0</string>
+    <string name="percent">%</string>
+    <string name="rSquare">√</string>
+    <string name="poten2">x^2</string>
+    <string name="inverse">1/x</string>
+
 </resources>
