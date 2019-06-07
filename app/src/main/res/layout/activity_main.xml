@@ -41,7 +41,7 @@
         android:background="@android:color/white"
         android:ems="10"
         android:text="0"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal"
         android:padding="8dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,6 +155,7 @@
             android:background="@android:color/white"
             android:padding="16dp"
             android:text="0"
+            android:inputType="numberDecimal"
             android:textAlignment="textEnd" />
 
 
