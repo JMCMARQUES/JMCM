@@ -43,7 +43,7 @@
         android:hint="@string/number_request"
         android:inputType="numberDecimal"
         android:padding="8dp"
-        android:text="@string/zero"
+        android:text=""
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,8 +52,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="64dp"
+        android:layout_height="425dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/writeHere">
 
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="sum"
                 android:text="@string/sum"
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="minus"
                 android:text="@string/minus"
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="multiply"
                 android:text="@string/multiply"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="divide"
                 android:text="@string/divide"
@@ -113,6 +113,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/secondOperatorLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/operatiorLine"
@@ -123,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="percentage"
                 android:text="@string/percent"
@@ -135,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="rootSq"
                 android:text="@string/rSquare"
@@ -147,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="pot"
                 android:text="@string/poten2"
@@ -159,12 +160,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="inverse"
                 android:text="@string/inverse"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdOperatorLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/secondOperatorLine"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tenPot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:onClick="tenPot"
+                android:text="@string/tenPot"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:onClick="log"
+                android:text="@string/log"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
         </LinearLayout>
 
         <Button
@@ -205,6 +240,7 @@
             android:layout_width="392dp"
             android:layout_height="wrap_content"
             android:layout_above="@id/clearLast"
+            android:layout_below="@id/thirdOperatorLine"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
