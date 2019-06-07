@@ -7,88 +7,120 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.calculator.operationsPackage.Core;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.calculator.MESSAGE";
-    private int operationId;
+    private String operator;
+    private Core core = new Core();
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-
+    /**
+     * @param view
+     */
     public void sum(View view) {
-        fetchNumberAndCalc("+");
+        operator = "+";
+        fetchSendNumber(operator);
         clearAll(view);
     }
-
-    public void minus(View view) {
-        fetchNumberAndCalc("-");
-        clearAll(view);
-    }
-
-    public void multiply(View view) {
-        fetchNumberAndCalc("*");
-        clearAll(view);
-    }
-
-    public void divide(View view) {
-        fetchNumberAndCalc("/");
-        clearAll(view);
-    }
-
-    public void clearLast(View view) {
-        EditText editText = (EditText) findViewById(R.id.writeHere);
-        String message = editText.getText().toString();
-        String returnMessage=message.substring(0,message.length()-1);
-
-        editText.setText(returnMessage);
-    }
-
-    public void clearAll(View view) {
-        EditText editText = findViewById(R.id.writeHere);
-        editText.setText("0");
-    }
-
-    public void result(View view) {
-
-        clearAll(view);
-    }
-
 
     /**
-     * @param
+     * @param view
      */
-    private void fetchNumberAndCalc(String operator) {
+    public void minus(View view) {
+        operator = "-";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
 
-        TextView introducedNumber = (TextView) findViewById(R.id.display);
-        double oldNumber = Double.parseDouble(introducedNumber.getText().toString());
+    /**
+     * @param view
+     */
+    public void multiply(View view) {
+        operator = "*";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void divide(View view) {
+        operator = "/";
+        fetchSendNumber(operator);
+        clearAll(view);
+    }
+
+    /**
+     * @param view
+     */
+    public void clearLast(View view) {
+        EditText editText = (EditText) findViewById(R.id.writeHere);
+        String returnMessage;
+        if (editText.getText().toString().equals("")) {
+        } else {
+            String message = editText.getText().toString();
+            returnMessage = message.substring(0, message.length() - 1);
+            editText.setText(returnMessage);
+            editText.setSelection(returnMessage.length());
+        }
+    }
+
+    /**
+     * @param view
+     */
+    public void clearAll(View view) {
+        EditText editText = findViewById(R.id.writeHere);
+        editText.setText("");
+    }
+
+    /**
+     * @param view
+     */
+    public void result(View view) {
+        System.out.println("operator at result " + operator);
+
+        if (operator == null) {
+        } else {
+            fetchSendNumber(operator);
+        }
+        clearAll(view);
+    }
+
+    /**
+     * @param operator
+     */
+    private void fetchSendNumber(String operator) {
 
         EditText newNumber = (EditText) findViewById(R.id.writeHere);
-        double introducedN = Double.parseDouble(newNumber.getText().toString());
 
-        TextView textView = findViewById(R.id.display);
-        double result;
-
-        if (oldNumber == 0) {
-            textView.setText(String.valueOf(introducedN));
-
+        if (newNumber.getText().toString().equals("")) {
         } else {
-            if (operator.equals("+")) {
-                result = oldNumber + introducedN;
-            } else if (operator.equals("-")) {
-                result = oldNumber - introducedN;
-            } else if (operator.equals("*")) {
-                result = oldNumber * introducedN;
-            } else if (operator.equals("/")) {
-                result = oldNumber / introducedN;
+            System.out.println("FetchSend operator: " + operator);
+            TextView existingNumber = (TextView) findViewById(R.id.display);
+            double oldNumber = Double.parseDouble(existingNumber.getText().toString());
+
+            double introducedNumber = Double.parseDouble(newNumber.getText().toString());
+
+            TextView textView = findViewById(R.id.display);
+            double result;
+
+            if (oldNumber == 0) {
+                textView.setText(String.valueOf(introducedNumber));
+
             } else {
-                result = 0;
+                result = core.calculate(operator, oldNumber, introducedNumber);
+                String finalValue = String.valueOf(result);
+                textView.setText(finalValue);
             }
-            String finalValue = String.valueOf(result);
-            textView.setText(finalValue);
         }
     }
 }
