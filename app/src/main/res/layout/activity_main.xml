@@ -25,7 +25,7 @@
         android:padding="8dp"
         android:text="@string/calculator_name"
         android:textColor="@android:color/white"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +40,10 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/white"
         android:ems="10"
+        android:hint="@string/number_request"
         android:inputType="numberDecimal"
         android:padding="8dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +52,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/writeHere"
-        tools:layout_editor_absoluteY="257dp">
+        app:layout_constraintTop_toBottomOf="@id/writeHere">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,17 +132,17 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:onClick="clearLast"
-            android:text="@string/clearLast" />
+            android:text="@string/clearLast"/>
 
         <Button
             android:id="@+id/clearAll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/equals"
+            android:layout_above="@id/clearCalc"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:onClick="clearAll"
-            android:text="@string/clearAll" />
+            android:text="@string/clearAll"/>
 
         <TextView
             android:id="@+id/display"
@@ -155,8 +155,18 @@
             android:background="@android:color/white"
             android:inputType="numberDecimal"
             android:padding="16dp"
-            android:text="0"
-            android:textAlignment="textEnd" />
+            android:text="@string/zero"
+            android:textAlignment="textEnd"/>
+
+        <Button
+            android:id="@+id/clearCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/equals"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:onClick="clearCalc"
+            android:text="@string/clearCalc" />
 
 
     </RelativeLayout>

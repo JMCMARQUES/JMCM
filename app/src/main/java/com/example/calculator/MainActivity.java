@@ -85,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * @param view
      */
+    public void clearCalc(View view) {
+        TextView textView = findViewById(R.id.display);
+        textView.setText("0");
+    }
+
+    /**
+     * @param view
+     */
     public void result(View view) {
         if (operator == null) {
         } else {
