@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">JMCMCalculator</string>
     <string name="calculator_name">JMCM Calculator</string>
     <string name="number_request">Type in a number</string>
     <string name="sum">+</string>
@@ -16,6 +16,6 @@
     <string name="poten2">x^2</string>
     <string name="inverse">1/x</string>
     <string name="tenPot">10^x</string>
-    <string name="log">log</string>
+    <string name="log10">log10</string>
 
 </resources>

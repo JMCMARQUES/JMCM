@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     private String operator;
     private Core core = new Core();
 
+    private EditText userInput;
+    private TextView resultDisplay;
+
     /**
      * @param savedInstanceState
      */
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userInput = findViewById(R.id.writeHere);
+        resultDisplay = findViewById(R.id.display);
     }
 
     /**
@@ -63,14 +69,12 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void clearLast(View view) {
-        EditText editText = (EditText) findViewById(R.id.writeHere);
         String returnMessage;
-        if (editText.getText().toString().equals("")) {
-        } else {
-            String message = editText.getText().toString();
+        if (! userInput.getText().toString().equals("")) {
+            String message = userInput.getText().toString();
             returnMessage = message.substring(0, message.length() - 1);
-            editText.setText(returnMessage);
-            editText.setSelection(returnMessage.length());
+            userInput.setText(returnMessage);
+            userInput.setSelection(returnMessage.length());
         }
     }
 
@@ -78,16 +82,14 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void clearAll(View view) {
-        EditText editText = findViewById(R.id.writeHere);
-        editText.setText("");
+        userInput.setText("");
     }
 
     /**
      * @param view
      */
     public void clearCalc(View view) {
-        TextView textView = findViewById(R.id.display);
-        textView.setText("0");
+        resultDisplay.setText("0");
     }
 
     /**
@@ -160,22 +162,16 @@ public class MainActivity extends AppCompatActivity {
      */
     private void fetchSendNumber(String operator) {
 
-        EditText newNumber = (EditText) findViewById(R.id.writeHere);
-        if (newNumber.getText().toString().equals("")) {
-        } else {
-            TextView existingNumber = (TextView) findViewById(R.id.display);
-            double oldNumber = Double.parseDouble(existingNumber.getText().toString());
-            double introducedNumber = Double.parseDouble(newNumber.getText().toString());
-            double result;
+        if (!userInput.getText().toString().equals("")) {
+            double oldNumber = Double.parseDouble(resultDisplay.getText().toString());
+            double introducedNumber = Double.parseDouble(userInput.getText().toString());
 
-            TextView textView = findViewById(R.id.display);
-            if (oldNumber == 0 && operator != "%" && operator != "squareRoot" && operator != "pot" && operator != "inv" && operator != "tenPot" && operator != "log") {
-                textView.setText(String.valueOf(introducedNumber));
-
+            if (oldNumber == 0 && !operator.equals("%") && !operator.equals("squareRoot") && !operator.equals("pot") && !operator.equals("inv") && !operator.equals("tenPot") && !operator.equals("log")) {
+                resultDisplay.setText(String.valueOf(introducedNumber));
             } else {
-                result = core.calculate(operator, oldNumber, introducedNumber);
+                double result = core.calculate(operator, oldNumber, introducedNumber);
                 String finalValue = String.valueOf(result);
-                textView.setText(finalValue);
+                resultDisplay.setText(finalValue);
             }
         }
     }

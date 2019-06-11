@@ -195,7 +195,7 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:onClick="log"
-                android:text="@string/log"
+                android:text="@string/log10"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
