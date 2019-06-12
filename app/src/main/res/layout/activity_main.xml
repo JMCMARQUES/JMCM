@@ -31,7 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/writeHere"
         android:layout_width="match_parent"
@@ -67,10 +66,8 @@
                 android:id="@+id/plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="sum"
                 android:text="@string/sum"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -79,22 +76,18 @@
                 android:id="@+id/minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="minus"
                 android:text="@string/minus"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/multiply"
+                android:id="@+id/multip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="multiply"
                 android:text="@string/multiply"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -103,10 +96,9 @@
                 android:id="@+id/divide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="divide"
                 android:text="@string/divide"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -123,10 +115,8 @@
                 android:id="@+id/percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="percentage"
                 android:text="@string/percent"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -135,10 +125,8 @@
                 android:id="@+id/rSquare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="rootSq"
                 android:text="@string/rSquare"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -147,10 +135,8 @@
                 android:id="@+id/poten2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="pot"
                 android:text="@string/poten2"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -159,10 +145,8 @@
                 android:id="@+id/inverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="inverse"
                 android:text="@string/inverse"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -179,10 +163,8 @@
                 android:id="@+id/tenPot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="tenPot"
                 android:text="@string/tenPot"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -191,10 +173,8 @@
                 android:id="@+id/log"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:onClick="log"
                 android:text="@string/log10"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -212,34 +192,31 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:onClick="result"
             android:text="@string/equals" />
 
         <Button
-            android:id="@+id/clearLast"
+            android:id="@+id/clrLast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/clearAll"
+            android:layout_above="@id/clrAll"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:onClick="clearLast"
             android:text="@string/clearLast" />
 
         <Button
-            android:id="@+id/clearAll"
+            android:id="@+id/clrAll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/clearCalc"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:onClick="clearAll"
-            android:text="@string/clearAll" />
+            android:text="@string/clrAll" />
 
         <TextView
             android:id="@+id/display"
             android:layout_width="392dp"
             android:layout_height="wrap_content"
-            android:layout_above="@id/clearLast"
+            android:layout_above="@id/clrLast"
             android:layout_below="@id/thirdOperatorLine"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -257,7 +234,6 @@
             android:layout_above="@id/equals"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:onClick="clearCalc"
             android:text="@string/clearCalc" />
 
     </RelativeLayout>

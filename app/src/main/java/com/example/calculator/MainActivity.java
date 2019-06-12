@@ -3,19 +3,29 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.calculator.operationsPackage.Core;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     private String operator;
     private Core core = new Core();
 
-    private EditText userInput;
-    private TextView resultDisplay;
+    @BindView(R.id.writeHere)
+    EditText userInput;
+
+    @BindView(R.id.display)
+    TextView resultDisplay;
+
 
     /**
      * @param savedInstanceState
@@ -25,52 +35,57 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userInput = findViewById(R.id.writeHere);
-        resultDisplay = findViewById(R.id.display);
+        ButterKnife.bind(this);
     }
 
+
     /**
-     * @param view
+     *
      */
-    public void sum(View view) {
+    @OnClick(R.id.plus)
+    public void sum() {
         operator = "+";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void minus(View view) {
+    @OnClick(R.id.minus)
+    public void minus() {
         operator = "-";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void multiply(View view) {
+    @OnClick(R.id.multip)
+    public void multiply() {
         operator = "*";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void divide(View view) {
+    @OnClick(R.id.divide)
+    public void divide() {
         operator = "/";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void clearLast(View view) {
+    @OnClick(R.id.clrLast)
+    public void clearLast() {
         String returnMessage;
-        if (! userInput.getText().toString().equals("")) {
+        if (!userInput.getText().toString().equals("")) {
             String message = userInput.getText().toString();
             returnMessage = message.substring(0, message.length() - 1);
             userInput.setText(returnMessage);
@@ -79,82 +94,91 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @param view
+     *
      */
-    public void clearAll(View view) {
+    @OnClick(R.id.clrAll)
+    public void clearAll() {
         userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void clearCalc(View view) {
+    @OnClick(R.id.clearCalc)
+    public void clearCalc() {
         resultDisplay.setText("0");
     }
 
     /**
-     * @param view
+     *
      */
-    public void result(View view) {
+    @OnClick(R.id.equals)
+    public void result() {
         if (operator == null) {
         } else {
             fetchSendNumber(operator);
         }
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void percentage(View view) {
+    @OnClick(R.id.percent)
+    public void percentage() {
         operator = "%";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void rootSq(View view) {
+    @OnClick(R.id.rSquare)
+    public void rootSq() {
         operator = "squareRoot";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void pot(View view) {
+    @OnClick(R.id.poten2)
+    public void pot() {
         operator = "pot";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void inverse(View view) {
+    @OnClick(R.id.inverse)
+    public void inverse() {
         operator = "inv";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void tenPot(View view) {
+    @OnClick(R.id.tenPot)
+    public void tenPot() {
         operator = "tenPot";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
-     * @param view
+     *
      */
-    public void log(View view) {
+    @OnClick(R.id.log)
+    public void log() {
         operator = "log";
         fetchSendNumber(operator);
-        clearAll(view);
+        userInput.setText("");
     }
 
     /**
