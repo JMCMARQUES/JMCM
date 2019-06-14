@@ -19,5 +19,6 @@
     <string name="tenPot">10^x</string>
     <string name="log10">log10</string>
     <string name="logs">historial</string>
+    <string name="clearLogs">limpar historial</string>
 
 </resources>

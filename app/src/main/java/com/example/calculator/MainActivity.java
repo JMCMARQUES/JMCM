@@ -11,7 +11,6 @@ import com.example.calculator.Log.CalcLog;
 import com.example.calculator.Operations.Core;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private Core core = new Core();
     private List<CalcLog> calcLogList = new ArrayList<>();
 
-    public static final String LOG_MESSAGE="com.example.calculator.MESSAGE";
+    public static final String LOG_MESSAGE = "com.example.calculator.MESSAGE";
 
+    //butterknife annotation to connect the EditText userInput to the ativity_main.XML
     @BindView(R.id.writeHere)
     EditText userInput;
 
@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //butterknife method to bind the annotated variables to ativity_main.XML
         ButterKnife.bind(this);
     }
 
 
     /**
-     *
+     * onClick annotation will link the method to a specific id target
      */
     @OnClick(R.id.plus)
     public void sum() {
@@ -193,17 +193,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     @OnClick(R.id.logs)
-    public void logs(){
+    public void logs() {
 
+
+        //trasnforming the initial ArrayList of CalcLog objects into a String ArrayList
         ArrayList<String> tempList = new ArrayList<>();
         for (CalcLog c : calcLogList) {
             tempList.add(c.getPrintInfo());
         }
 
+        //new
         Intent logsActivity = new Intent(this, LogsActivity.class);
         logsActivity.putStringArrayListExtra(LOG_MESSAGE, tempList);
         startActivity(logsActivity);
     }
+
+
 
 
     /**
@@ -215,18 +220,15 @@ public class MainActivity extends AppCompatActivity {
             double oldNumber = Double.parseDouble(resultDisplay.getText().toString());
             double introducedNumber = Double.parseDouble(userInput.getText().toString());
 
+
             if (oldNumber == 0 && !operator.equals("%") && !operator.equals("squareRoot") && !operator.equals("pot") && !operator.equals("inv") && !operator.equals("tenPot") && !operator.equals("log")) {
                 resultDisplay.setText(String.valueOf(introducedNumber));
             } else {
                 double result = core.calculate(operator, oldNumber, introducedNumber);
 
-
+                //each operation will create an CalcLog object and will add it to the calcLogList ArrayList container
                 CalcLog calcLog = new CalcLog(operator, oldNumber, introducedNumber, result);
                 calcLogList.add(calcLog);
-
-                for (CalcLog c : calcLogList) {
-                    calcLog.printData();
-                }
 
 
                 String finalValue = String.valueOf(result);
