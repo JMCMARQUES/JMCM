@@ -2,11 +2,17 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.calculator.operationsPackage.Core;
+import com.example.calculator.Log.CalcLog;
+import com.example.calculator.Operations.Core;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String operator;
     private Core core = new Core();
+    private List<CalcLog> calcLogList = new ArrayList<>();
+
+    public static final String LOG_MESSAGE="com.example.calculator.MESSAGE";
 
     @BindView(R.id.writeHere)
     EditText userInput;
@@ -34,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         ButterKnife.bind(this);
     }
@@ -181,6 +191,21 @@ public class MainActivity extends AppCompatActivity {
         userInput.setText("");
     }
 
+
+    @OnClick(R.id.logs)
+    public void logs(){
+
+        ArrayList<String> tempList = new ArrayList<>();
+        for (CalcLog c : calcLogList) {
+            tempList.add(c.getPrintInfo());
+        }
+
+        Intent logsActivity = new Intent(this, LogsActivity.class);
+        logsActivity.putStringArrayListExtra(LOG_MESSAGE, tempList);
+        startActivity(logsActivity);
+    }
+
+
     /**
      * @param operator
      */
@@ -194,9 +219,20 @@ public class MainActivity extends AppCompatActivity {
                 resultDisplay.setText(String.valueOf(introducedNumber));
             } else {
                 double result = core.calculate(operator, oldNumber, introducedNumber);
+
+
+                CalcLog calcLog = new CalcLog(operator, oldNumber, introducedNumber, result);
+                calcLogList.add(calcLog);
+
+                for (CalcLog c : calcLogList) {
+                    calcLog.printData();
+                }
+
+
                 String finalValue = String.valueOf(result);
                 resultDisplay.setText(finalValue);
             }
         }
     }
+
 }

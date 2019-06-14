@@ -1,4 +1,4 @@
-package com.example.calculator.operationsPackage;
+package com.example.calculator.Operations;
 
 public class Core {
 
