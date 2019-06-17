@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JMCMCalculator</string>
+    <string name="calculator_name">Calculadora JMCM</string>
+    <string name="number_request">Introduza um número</string>
+    <string name="sum">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">x</string>
+    <string name="divide">/</string>
+    <string name="equals">= (resultado)</string>
+    <string name="clearLast">Remover o último dígito</string>
+    <string name="clrAll">Limpar campo de introdução</string>
+    <string name="clearCalc">Limpar campo de resultado</string>
+    <string name="zero">0</string>
+    <string name="percent">%</string>
+    <string name="rSquare">√</string>
+    <string name="poten2">x^2</string>
+    <string name="inverse">1/x</string>
+    <string name="tenPot">10^x</string>
+    <string name="log10">log10</string>
+    <string name="logs">historial</string>
+    <string name="clearLogs">limpar historial</string>
+
+</resources>

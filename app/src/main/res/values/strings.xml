@@ -17,5 +17,8 @@
     <string name="inverse">1/x</string>
     <string name="tenPot">10^x</string>
     <string name="log10">log10</string>
+    <string name="logs">history log</string>
+    <string name="clearLogs">clear history log</string>
+
 
 </resources>
