@@ -3,9 +3,11 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.calculator.Log.CalcLog;
 import com.example.calculator.Operations.Core;
@@ -25,8 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private String operator;
     private Core core = new Core();
     private List<CalcLog> calcLogList = new ArrayList<>();
+    private ArrayList<String> tempList = new ArrayList<>();
+
+    private String operations;
 
     public static final String LOG_MESSAGE = "com.example.calculator.MESSAGE";
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String OPERATIONS = "operations";
 
     //butterknife annotation to connect the EditText userInput to the ativity_main.XML
     @BindView(R.id.writeHere)
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //butterknife method to bind the annotated variables to ativity_main.XML
         ButterKnife.bind(this);
+        loadData();
     }
 
 
@@ -77,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         operator = "*";
         fetchSendNumber(operator);
         userInput.setText("");
+
     }
 
     /**
@@ -191,31 +200,65 @@ public class MainActivity extends AppCompatActivity {
         userInput.setText("");
     }
 
-
+    /**
+     *
+     */
     @OnClick(R.id.logs)
     public void logs() {
-
-
-        //trasnforming the initial ArrayList of CalcLog objects into a String ArrayList
-        ArrayList<String> tempList = new ArrayList<>();
+        //trasnforming the initial ArrayList of CalcLog objects into a  ArrayList of Strings
         for (CalcLog c : calcLogList) {
             tempList.add(c.getPrintInfo());
         }
 
-        //new
+        //new activity logsActivity
         Intent logsActivity = new Intent(this, LogsActivity.class);
         logsActivity.putStringArrayListExtra(LOG_MESSAGE, tempList);
+
+        saveData(tempList);
+
         startActivity(logsActivity);
+        calcLogList.clear();
     }
 
 
+    /**
+     *
+     * @param tempList
+     */
+    private void saveData(List<String> tempList) {
+        //transforming the data into a String to be saved using sharedPreferences
+        String finalLog = "";
+        for (String c : tempList) {
+            finalLog += c + "\n";
+        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(OPERATIONS, finalLog);
+        editor.apply();
+        Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     *
+     */
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        operations = sharedPreferences.getString(OPERATIONS, "");
+        String[] operationsList = operations.split("\n");
+
+        for (String c : operationsList) {
+            tempList.add(c);
+        }
+
+        Toast.makeText(this, "Previouse Data Loaded", Toast.LENGTH_SHORT).show();
+    }
 
 
     /**
      * @param operator
      */
     private void fetchSendNumber(String operator) {
-
         if (!userInput.getText().toString().equals("")) {
             double oldNumber = Double.parseDouble(resultDisplay.getText().toString());
             double introducedNumber = Double.parseDouble(userInput.getText().toString());
@@ -238,3 +281,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
