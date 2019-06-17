@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String OPERATIONS = "operations";
 
-    //butterknife annotation to connect the EditText userInput to the ativity_main.XML
+    //butterknife annotation to connect the EditText userInput to the activity_main.XML
     @BindView(R.id.writeHere)
     EditText userInput;
 
+    //butterknife annotation to connect the TextView widget to the activity_main.XML
     @BindView(R.id.display)
     TextView resultDisplay;
 
@@ -226,16 +227,19 @@ public class MainActivity extends AppCompatActivity {
      * @param tempList
      */
     private void saveData(List<String> tempList) {
-        //transforming the data into a String to be saved using sharedPreferences
+        //transforming the ArrayList<String> tempList data into a String to be saved using sharedPreferences
         String finalLog = "";
         for (String c : tempList) {
             finalLog += c + "\n";
         }
 
+        //MODE_PRIVATE means that the saved data will not be accessed by other applications
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(OPERATIONS, finalLog);
         editor.apply();
+
+        //message to be shown at the end of this method, with "Data Saved" indication
         Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
     }
 
@@ -243,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     private void loadData() {
+        //fetching the persisted data and treating it to be introduced back into the ArrayList<String> tempList
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         operations = sharedPreferences.getString(OPERATIONS, "");
         String[] operationsList = operations.split("\n");
@@ -251,7 +256,8 @@ public class MainActivity extends AppCompatActivity {
             tempList.add(c);
         }
 
-        Toast.makeText(this, "Previouse Data Loaded", Toast.LENGTH_SHORT).show();
+        //message to be shown at the end of this method, with "Previous Data Loaded" indication
+        Toast.makeText(this, "Previous Data Loaded", Toast.LENGTH_SHORT).show();
     }
 
 
