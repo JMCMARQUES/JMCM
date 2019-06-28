@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //butterknife method to bind the annotated variables to ativity_main.XML
+        //butterknife method to bind the annotated properties (@BindView) to activity_main.XML
         ButterKnife.bind(this);
         loadData();
     }
@@ -223,7 +223,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     *
      * @param tempList
      */
     private void saveData(List<String> tempList) {
